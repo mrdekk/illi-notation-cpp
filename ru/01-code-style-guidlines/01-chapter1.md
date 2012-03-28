@@ -57,10 +57,8 @@
 
 Пример:  
 
-`
-template < class T > …  
-template < class C, class D > …  
-`
+    template < class T > …  
+    template < class C, class D > …  
 
 *Обычная практика, принятая в сообществе С++. Это позволяет выделить шаблонные имена из всех остальных наименований. Однако современные средства проектирования также позволяют выделять данный класс объектов.*
 
@@ -68,10 +66,8 @@ template < class C, class D > …
 
 Пример:  
 
-`
-exportHtmlSource( ); // NOT: exportHTMLSource( );  
-openDvdPlayer( ); // NOT: openDVDPlayer( );  
-`
+    exportHtmlSource( ); // NOT: exportHTMLSource( );
+    openDvdPlayer( ); // NOT: openDVDPlayer( );
 
 *Использование всех заглавных букв будет создавать конфликты с правилами, которые были указаны выше. Например переменные таких типов по правилам должны были бы называться dVD, hTML и т.д. что очевидно не очень хорошо читается. Вторая проблема представлена в примере — когда такое имя соединяется с другим, читаемость кода резко понижается.*
 
@@ -85,24 +81,20 @@ openDvdPlayer( ); // NOT: openDVDPlayer( );
 
 Пример:  
 
-`
-class SomeClass  
-{  
-private:  
-    int _length;  
-}
-`
+    class SomeClass  
+    {  
+    private:  
+        int _length;  
+    }
 
 *В отличие от имени и типа, область видимости переменной — одна из важнейших особенностей. Отличие переменных класса путем добавления символа подчеркивания позволяет легко отделять их от локальных (временных) переменных. Это важно, потому что поля класса имеют большее значение, нежели локальные переменные методов, поэтому должны отделяться специальным образом.*
 
 *Побочные эффект такого наименование проявляется в элегантном решении проблемы с поиском подходящих имен для переменных сеттеров и конструкторов:*
 
-`
-void setDepth( int depth )  
-{  
-    _depth = depth;  
-}
-`
+    void setDepth( int depth )  
+    {  
+        _depth = depth;  
+    }
 
 *Вопрос где ставить подчеркивание — сначала или вконце? Обе практики широко используются. На наш взгляд использование префикса предпочтительнее — ввиду большего обращения внимания программиста.*
 
@@ -112,27 +104,21 @@ void setDepth( int depth )
 
 Пример:  
 
-`
-void setTopic( Topic* topic )  
-    // NOT: void setTopic( Topic* value )  
-    // NOT: void setTopic( Topic* aTopic )  
-    // NOT: void setTopic( Topic* t )  
-`
-
-`
-void connect( Database* database )  
-    // NOT: void connect( Database* db )  
-    // NOT: void connect( Database* oracleDB )  
-`
+    void setTopic( Topic* topic )  
+        // NOT: void setTopic( Topic* value )  
+        // NOT: void setTopic( Topic* aTopic )  
+        // NOT: void setTopic( Topic* t )  
+    
+    void connect( Database* database )  
+        // NOT: void connect( Database* db )  
+        // NOT: void connect( Database* oracleDB )  
 
 *Данное правило призвано уменьшить сложность путем уменьшения количества используемых слов и выражений. Это также позволяет предположить тип переменной по ее имени. Если в каких-то случаях кажется, что очень сложно следовать этому правилу — то это является СЕРЬЕЗНЫМ индикатором того, что имя типа выбрано плохо.*
 
 *Не единичные временные переменные имеют роль. Такие переменные именуются комбинацией роли и типа:*
 
-`
-Point pointStarting, pointCenter;  
-Name nameLogin;  
-`
+    Point pointStarting, pointCenter;  
+    Name nameLogin;  
 
 **[1.2.1.11] Все имена должны быть написаны на английском языке!**
 
@@ -156,15 +142,11 @@ Name nameLogin;
 
 Пример:  
 
-`
-employee.getName( );  
-employee.setName( name );  
-`
-
-`
-matrix.getElement( 2, 4 );  
-matrix.setElement( 2, 4, value );  
-`
+    employee.getName( );  
+    employee.setName( name );  
+    
+    matrix.getElement( 2, 4 );  
+    matrix.setElement( 2, 4, value );  
 
 *Обычная практика, принятая в сообщество С++. В языке Java это соглашение более или менее является стандартным.*
 
@@ -172,10 +154,8 @@ matrix.setElement( 2, 4, value );
 
 Пример:  
 
-`
-valueSet->computeAverage( );  
-matrix->computeInverse( );  
-`
+    valueSet->computeAverage( );  
+    matrix->computeInverse( );  
 
 *Дайте читающему понять, что данная операция может быть затратна с точки зрения времени выполнения, и если это делается часто — стоит подумать о кэшировании. Правильное использование этого соглашения увеличивает читаемость.*
 
@@ -183,10 +163,8 @@ matrix->computeInverse( );
 
 Пример:  
 
-`
-vertex.findNearestVertex( );  
-matrix.findMinElement( );  
-`
+    vertex.findNearestVertex( );  
+    matrix.findMinElement( );  
 
 *Дайте понять читающему что этот метод просто производит поиск и вовлекает в это минимум вычислений. Правильное использование данного соглашения повышает читаемость кода.*
 
@@ -194,9 +172,7 @@ matrix.findMinElement( );
 
 Пример:  
 
-`
-printer.initiateFontSet( );  
-`
+    printer.initiateFontSet( );  
 
 *Аббревиатура init не должна использоваться.*
 
@@ -204,9 +180,9 @@ printer.initiateFontSet( );
 
 Пример:  
 
-`
-mainWindow, propertiesDialog, widthScale, loginText, leftScrollbar, mainForm, fileMenu, minLabel, exitButton, yesToogle …  
-`
+    mainWindow, propertiesDialog, widthScale, loginText, 
+    leftScrollbar, mainForm, fileMenu, minLabel, exitButton, 
+    yesToogle …  
 
 *Увеличивает читаемость кода ввиду того, что дает читающему понимание типа объекта и его свойств.*
 
@@ -214,10 +190,8 @@ mainWindow, propertiesDialog, widthScale, loginText, leftScrollbar, mainForm, fi
 
 Пример:  
 
-`
-vector<Point> points;  
-int values[];  
-`
+    vector<Point> points;  
+    int values[];  
 
 *Увеличивает читаемость кода ввиду того, что дает немедленное понимание типа объекта и возможных операций над его элементами.*
 
@@ -237,19 +211,15 @@ int values[];
 
 Пример:  
 
-`
-for ( int i = 0; i < nTables; ++i )  
-{  
-    …  
-}  
-`
-
-`
-for ( vector<MyClass>::iterator i = list.begin( ); i != list.end( ); ++i )  
-{  
-    …  
-}  
-`
+    for ( int i = 0; i < nTables; ++i )  
+    {  
+        …  
+    }  
+    
+    for ( vector<MyClass>::iterator i = list.begin( ); i != list.end( ); ++i )  
+    {  
+        …  
+    }  
 
 *Это соглашение также математического происхождения. Имена j, k, … должны использоваться ТОЛЬКО для вложенных циклов.*
 
@@ -257,32 +227,26 @@ for ( vector<MyClass>::iterator i = list.begin( ); i != list.end( ); ++i )
 
 Пример:  
 
-`
-isSet, isVisible, isFinished( ), isFound( ), isOpen( )
-`
+    isSet, isVisible, isFinished( ), isFound( ), isOpen( )
 
 *Общая практика, принятая в сообществе С++ и частично используемая в Java. Использование префикса is решает общую проблему наименования логических переменных имеющих значение статуса или флага.*
 
 *Имеется несколько альтернатив, которые иногда лучше подходят к ситуации и могут быть использованы. Эти слова «has», «can» и «should»:*
 
-`
-bool hasLicense( );  
-bool canEvaluate( );  
-bool shouldSort( );  
-`
+    bool hasLicense( );  
+    bool canEvaluate( );  
+    bool shouldSort( );  
 
 **[1.2.2.11] Общепринятые имена должны соответствовать общепринятым операциям.**
 
 Пример:  
 
-`
-get/set/put, add/remove,  
-create/destroy, start/stop,  
-insert/delete, increment/decrement,  
-old/new, begin/end, first/last, up/down,  
-min/max, next/prev, open/close, show/hide,  
-suspend/resume, …
-`
+    get/set/put, add/remove,  
+    create/destroy, start/stop,  
+    insert/delete, increment/decrement,  
+    old/new, begin/end, first/last, up/down,  
+    min/max, next/prev, open/close, show/hide,  
+    suspend/resume, …
 
 *Уменьшает сложность благодаря симметрии.*
 
@@ -290,39 +254,31 @@ suspend/resume, …
 
 Пример:  
 
-`
-computeAverage( ); // NOT: compAvg( );
-`
+    computeAverage( ); // NOT: compAvg( );
 
 *Следует иметь ввиду два типа слов. Первые — это слова из словаря. Такие слова никогда не могут появляться в именах в виде аббревиатур. Нельзя писать:*
 
-`
-cmd вместо command  
-cp вместо copy  
-pt вместо point  
-comp вместо compute  
-init вместо initialize  
-…
-`
+    cmd вместо command  
+    cp вместо copy  
+    pt вместо point  
+    comp вместо compute  
+    init вместо initialize  
+    …
 
 *Второй тип — словосочетания из специфичной предметной области, которые более широко известны в виде своих акронимов. Такие фразы должны быть записаны ввиде акронимов. Нельзя писать:*
 
-`
-HypertextMarkupLanguage вместо html  
-CentralProcessingUnit вместо cpu  
-PriceEarningRatio вместо pe  
-…
-`
+    HypertextMarkupLanguage вместо html  
+    CentralProcessingUnit вместо cpu  
+    PriceEarningRatio вместо pe  
+    …
 
 **[1.2.2.13] Следует избегать именование указателей.**
 
 Пример:
 
-`
-Line* line;  
-    // NOT: Line* pLine  
-    // NOT: Line* linePtr;  
-`
+    Line* line;  
+        // NOT: Line* pLine  
+        // NOT: Line* linePtr;  
 
 *Многие переменные в С/С++ являются указателями, поэтому иногда это правило сложно выполнить. Современные средства разработки позволяют выделать указатели из общего числа имен. Только если реальный тип объекта имеет существенное значение, указатель можно выделить в имени.*
 
@@ -330,10 +286,8 @@ Line* line;
 
 Пример:  
 
-`
-bool isError; // NOT: isNoError  
-bool isFound; // NOT: isNotFound  
-`
+    bool isError; // NOT: isNoError  
+    bool isFound; // NOT: isNotFound  
 
 *Проблема возникает тогда, когда подобное имя используется рядом с оператором «не», поэтому результат получается дважды отрицающим. Сразу не ясно что значит «!isNotFound».*
 
@@ -341,14 +295,12 @@ bool isFound; // NOT: isNotFound
 
 Пример:  
 
-`
-enum Colors  
-{  
-    COLOR_RED,  
-    COLOR_GREEN,  
-    COLOR_BLUE  
-}  
-`
+    enum Colors  
+    {  
+        COLOR_RED,  
+        COLOR_GREEN,  
+        COLOR_BLUE  
+    }  
 
 *Дополнительная информация позволяет понять где находится объявление, какие константы с каким связаны, а также какую концепцию представляют константы. Другой подход (применительно к C#) состоит в том, чтобы всегда ссылаться на значение через тип: Color::RED, Airline::AIR_FRANCE, …*
 
@@ -358,12 +310,10 @@ enum Colors
 
 Пример:  
 
-`
-class AccessException  
-{  
-    …  
-}  
-`
+    class AccessException  
+    {  
+        …  
+    }  
 
 *Классы исключений не являются главной частью архитектуры приложения, и именование их подобных образом позволяет выделять их из других классов.*
 
@@ -387,16 +337,14 @@ class AccessException
 
 Пример:  
 
-`
-class MyClass  
-{  
-public:  
-    int getValue( ) { return _value; } // NO!  
-    …  
-private:  
-    int _value;  
-}  
-`
+    class MyClass  
+    {  
+    public:  
+        int getValue( ) { return _value; } // NO!  
+        …  
+    private:  
+        int _value;  
+    }  
 
 *Заголовочные файлы должны объявлять интерфейс, файлы реализации — реализовывать его. В процессе поиска реализации программист должен точно знать, где искать реализацию, а где интерфейс.*
 
@@ -414,28 +362,20 @@ private:
 
 Пример:  
 
-`
-totalSum = a + b + c +  
-           d + e;  
-`
-
-`
-function ( param1, param2,  
-           param3 );
-`
-
-`
-setText( “Long line split”  
-         “into to parts” );  
-`
-
-`
-for ( int iTable = 0; iTable < nTables;  
-      iTable += tableStep )  
-{  
-    …  
-}  
-`
+    totalSum = a + b + c +  
+               d + e;  
+    
+    function ( param1, param2,  
+               param3 );
+    
+    setText( “Long line split”  
+             “into to parts” );  
+    
+    for ( int iTable = 0; iTable < nTables;  
+          iTable += tableStep )  
+    {  
+        …  
+    }  
 
 *Разбивка строки нужна тогда, когда она превышает 80 символов, разрешенных в предыдущем правиле. Сложно дать строгое правило как разбивать строку, поэтому следует иметь ввиду следующие общие рекомендации:*
 
@@ -449,39 +389,29 @@ for ( int iTable = 0; iTable < nTables;
 
 Пример:  
 
-`
-\#ifndef COM_COMPANY_MODULE_CLASSNAME_H  
-\#define COM_COMPANY_MODULE_CLASSNAME_H  
-…  
-\#endif // COM_COMPANY_MODULE_CLASSNAME_H  
-`
+    #ifndef COM_COMPANY_MODULE_CLASSNAME_H  
+    #define COM_COMPANY_MODULE_CLASSNAME_H  
+    …  
+    #endif // COM_COMPANY_MODULE_CLASSNAME_H  
 
 *Конструкция нужна для исключения ошибок компиляции при повторном включении. Соглашение по наименованию использует расположение файла в дереве исходных кодов и предотвращает конфликт имен.*
 
 *Никогда нельзя использовать конструкции которые предлагает определенный комплятор (например cl от Microsoft):*
 
-`
-// NOT: #pragma once
-`
+    // NOT: #pragma once
 
 **[1.3.2.2] Операции включения должны быть отсортированы и сгруппированы. Сортировка осуществляется по иерархической позиции файлов в системе начиная с самых низкоуровневых. Следует оставлять пустую строку между группами файлов.**
 
 Пример:  
 
-`
-\#include <fstream>  
-\#include <iomanip>  
-`
-
-`
-\#include <qt/qbutton.h>  
-\#include <qt/qtextfield.h>  
-`
-
-`
-\#include “com/company/ui/PropertiesDialog.h”  
-\#include “com/company/ui/MainWindow.h”  
-`
+    #include <fstream>  
+    #include <iomanip>  
+    
+    #include <qt/qbutton.h>  
+    #include <qt/qtextfield.h>  
+    
+    #include “com/company/ui/PropertiesDialog.h”  
+    #include “com/company/ui/MainWindow.h”  
 
 *Кроме того, что данное соглашение позволяет читающему увидеть отдельные файлы, оно также дает понимание того, какие модули используются.*
 
@@ -505,10 +435,8 @@ for ( int iTable = 0; iTable < nTables;
 
 Пример:  
 
-`
-floatValue = static_cast< float >( intValue );  
-    // NOT: floatValue = intValue  
-`
+    floatValue = static_cast< float >( intValue );  
+        // NOT: floatValue = intValue  
 
 *Благодаря этому соглашению можно избежать использование других типов. Следует помнить, что в С++ можно перегрузить любой оператор, в том числе присваивания и неявного приведения типов — поэтому неявное приведение может привести совершенно не к тем результатам, которые хотелось.*
 
@@ -518,10 +446,8 @@ floatValue = static_cast< float >( intValue );
 
 *Это правило направлено на то, чтобы переменные были валидными всегда. Иногда это сделать невозможно, как например*
 
-`
-int x, y, z;  
-getCenter( &x, &y, &z );  
-`
+    int x, y, z;  
+    getCenter( &x, &y, &z );  
 
 *В таких случаях разрешает оставить их неинициализированными вместо того, чтобы давать им какие-нибудь посторонние значения.*
 
@@ -542,11 +468,10 @@ getCenter( &x, &y, &z );
 **[1.4.2.5] Указатели и ссылки С++ должны находится сразу после типа, нежели перед именем.**
 
 Пример:  
+    
 
-`
-float* x; // NOT: float *x;  
-int& y; // NOT: int &y;  
-`
+    float* x; // NOT: float *x;  
+    int& y; // NOT: int &y;  
 
 *Указательность и ссылочность — это скорее свойство типа, нежели имени. С-программисты используют обратный подход, но в сообществе С++ это строгое правило.*
 
@@ -554,10 +479,8 @@ int& y; // NOT: int &y;
 
 Пример:  
 
-`
-if ( 0 != linesCount ) // NOT: if ( linesCount )  
-if ( 0.0 != value ) // NOT: if ( value )  
-`
+    if ( 0 != linesCount ) // NOT: if ( linesCount )  
+    if ( 0.0 != value ) // NOT: if ( value )  
 
 *Это не обязательно в стандарте С++ ввиду того, что 0 целых и вещественных типов реализован как бинарный 0, однако это дает немедленное понимание используемого типа.*
 
@@ -573,15 +496,11 @@ if ( 0.0 != value ) // NOT: if ( value )
 
 Пример:  
 
-`
-sum = 0;  
-for ( i = 0; i < 100; ++i )  
-    sum += value[ i ];  
-`
-
-`
-// NOT: for ( i = 0, sum = 0; i < 100; ++i ) sum += value[ i ];  
-`
+    sum = 0;  
+    for ( i = 0; i < 100; ++i )  
+        sum += value[ i ];  
+    
+    // NOT: for ( i = 0, sum = 0; i < 100; ++i ) sum += value[ i ];  
 
 *Улучшает читаемость и возможность поддержки. Проводит четкую грань между управляющими и обрабатываемыми переменными.*
 
@@ -589,22 +508,18 @@ for ( i = 0; i < 100; ++i )
 
 Пример:  
 
-`
-isDone = false;  
-while ( !isDone )  
-{  
-    …  
-}  
-`
-
-`
-// NOT: bool isDone = false;  
-//	  …  
-//	  while ( !isDone )  
-//	  {  
-//		…  
-//	  }  
-`
+    isDone = false;  
+    while ( !isDone )  
+    {  
+        …  
+    }  
+    
+    // NOT: bool isDone = false;  
+    //	  …  
+    //	  while ( !isDone )  
+    //	  {  
+    //		  …  
+    //	  }  
 
 **[1.4.3.3] Следует избегать циклов do-while.**
 
@@ -620,17 +535,13 @@ while ( !isDone )
 
 Пример:  
 
-`
-while ( true )  
-{  
-    …  
-}  
-`
-
-`
-for ( ; ; ) // NO!  
-while ( 1 ) // NO!  
-`
+    while ( true )  
+    {  
+        …  
+    }  
+    
+    for ( ; ; ) // NO!  
+    while ( 1 ) // NO!  
 
 *Проверка на 1 ненужна и непонятна. Форма for (;;) не читаема, и не видится как бесконечный цикл.*
 
@@ -640,22 +551,19 @@ while ( 1 ) // NO!
 
 Пример:  
 
-`
-bool isFinished = ( iElement < 0 ) || ( iElement > maxElement );  
-bool isRepeatedEntry = iElement = lastElement;  
-if ( isFinished || isRepeatedEntry )  
-{  
-    …  
-}  
-`
-`
-// NOT:  
-if ( ( iElement < 0 ) || ( iElement > maxElement ) ||  
-     iElement == lastElement )  
-{  
-    …  
-}  
-`
+    bool isFinished = ( iElement < 0 ) || ( iElement > maxElement );  
+    bool isRepeatedEntry = iElement = lastElement;  
+    if ( isFinished || isRepeatedEntry )  
+    {  
+        …  
+    }  
+    
+    // NOT:  
+    if ( ( iElement < 0 ) || ( iElement > maxElement ) ||  
+         iElement == lastElement )  
+    {  
+        …  
+    }  
 
 *Благадаря присваиванию логическим переменным — получаем автоматическое документирование кода. Такая конструкция легка в прочтении, понимании и поддержке.*
 
@@ -663,17 +571,15 @@ if ( ( iElement < 0 ) || ( iElement > maxElement ) ||
 
 Пример:
 
-`
-bool isOk = readFile( fileName );  
-if ( isOk )  
-{  
-    …  
-}  
-else  
-{  
-    …  
-}  
-`
+    bool isOk = readFile( fileName );  
+    if ( isOk )  
+    {  
+        …  
+    }  
+    else  
+    {  
+        …  
+    }  
 
 *Данное правило позволяет избежать нарушения обычного потока команд. Это важно как для читаемости, так и для производительности.*
 
@@ -681,14 +587,10 @@ else
 
 Пример:
 
-`
-if ( isDone )  
-    doCleanup( );  
-`
-
-`
-// NOT: if ( isDone ) doCleanup( );  
-`
+    if ( isDone )  
+        doCleanup( );  
+    
+    // NOT: if ( isDone ) doCleanup( );  
 
 *Это нужно для целей отладки. Когда написано в одну строку сложно определить дебаггером — истинно условие или ложно.*
 
@@ -696,21 +598,17 @@ if ( isDone )
 
 Пример:
 
-`
-File* fileHandle = open( fileName, “w” );  
-if ( NULL == fileHandle )  
-{  
-    …  
-}  
-`
-
-`
-// NOT:  
-if ( NULL == ( fileHandle = open( fileName, “w” ) ) )  
-{  
-    …  
-}  
-`
+    File* fileHandle = open( fileName, “w” );  
+    if ( NULL == fileHandle )  
+    {  
+        …  
+    }  
+    
+    // NOT:  
+    if ( NULL == ( fileHandle = open( fileName, “w” ) ) )  
+    {  
+        …  
+    }  
 
 *Условия с выполнение операций в них очень сложны в прочтении. Также не следует забывать и о возможных ошибках из-за неправильной расстановки знаков «=».*
 
@@ -724,14 +622,10 @@ if ( NULL == ( fileHandle = open( fileName, “w” ) ) )
 
 Пример:
 
-`
-double total = 0.0;	// NOT: double total = 0;  
-double speed = 3.0e8;	// NOT: double speed = 3e8;  
-`
-
-`
-double sum = ( a + b ) * 10.0;  
-`
+    double total = 0.0;	// NOT: double total = 0;  
+    double speed = 3.0e8;	// NOT: double speed = 3e8;  
+    
+    double sum = ( a + b ) * 10.0;  
 
 *Это подчеркивает различную природу целых и вещественных чисел. Математически эти две модели различны и имеют несовпадающие концепции.*
 
@@ -739,9 +633,7 @@ double sum = ( a + b ) * 10.0;
 
 Пример:
 
-`
-double total = 0.5; // NOT: double total = .5;  
-`
+    double total = 0.5; // NOT: double total = .5;  
 
 *Система чисел и выражений в С++ заимствована из математики, поэтому следует следовать математическим соглашениям. Также, 0.5 куда более читаемо, нежели .5. Также это исключает путаницу с целочисленным 5.*
 
@@ -749,9 +641,7 @@ double total = 0.5; // NOT: double total = .5;
 
 Пример:
 
-`
-int getValue( ) // NOT getValue( )
-`
+    int getValue( ) // NOT getValue( )
 
 *Если не задано явно, С++ считает что тип возвращаемого значения — int. Программисты должны избегать использование этой возможности, потому что начинающие программисты могут про нее не знать.*
 
@@ -771,10 +661,8 @@ int getValue( ) // NOT getValue( )
 
 Пример:
 
-`
-for ( i = 0; i < nElements; ++i )  
-    a[ i ] = 0;  
-`
+    for ( i = 0; i < nElements; ++i )  
+        a[ i ] = 0;  
 
 *Отступ в 1 мал для отображения структуры кода. Отступы более 4 могут повлечь нечитаемость глубоко вложенных конструкций и увеличить шанс разбиение строки. Обычно употребимые отступы 2 и 4. Следует придерживаться 4.*
 
@@ -782,51 +670,40 @@ for ( i = 0; i < nElements; ++i )
 
 Пример:
 
-`
-while ( !done )  
-{  
-    doSomething( );  
-    done = moreToDo( );  
-}  
-`
-`
-// NOT  
-while ( !done ) {  
-    doSomething( );  
-    done = moreToDo( );  
-}  
-`
-
-`
-// NOT  
-while ( !done )  
-  {  
-    doSomething( );  
-    done = moreToDo( );  
-  }  
-`
+    while ( !done )  
+    {  
+        doSomething( );  
+        done = moreToDo( );  
+    }  
+    
+    // NOT  
+    while ( !done ) {  
+        doSomething( );  
+        done = moreToDo( );  
+    }  
+    
+    // NOT  
+    while ( !done )  
+      {  
+        doSomething( );  
+        done = moreToDo( );  
+      }  
 
 **[1.5.1.3] Объявления класса должны быть в следующей форме.**
 
 Пример:
 
-`
-class SomeClass : public BaseClass  
-{  
-public:  
-    …  
-`
-
-`
-protected:  
-    …  
-`
-
-`
-private:  
-    …  
-};  
-`
+    class SomeClass : public BaseClass  
+    {  
+    public:  
+        …  
+    
+    protected:  
+        …  
+    
+    private:  
+        …  
+    };  
 
 *Это соглашение наследует предыдущее.*
 
@@ -834,12 +711,10 @@ private:
 
 Пример:
 
-`
-void someMethod( )  
-{  
-    …  
-}  
-`
+    void someMethod( )  
+    {  
+        …  
+    }  
 
 *Это соглашение наследует правило [1.5.1.2].*
 
@@ -847,38 +722,32 @@ void someMethod( )
 
 Пример:
 
-`
-if ( condition )  
-{  
-    statements;  
-}  
-`
-
-`
-if ( condition )  
-{  
-    statements;  
-}  
-else  
-{  
-    statements;  
-}  
-`
-
-`
-if ( condition )  
-{  
-    statements;  
-}  
-else if ( condition )  
-{  
-    statements;  
-}  
-else  
-{  
-    statements;  
-}  
-`
+    if ( condition )  
+    {  
+        statements;  
+    }  
+    
+    if ( condition )  
+    {  
+        statements;  
+    }  
+    else  
+    {  
+        statements;  
+    }  
+    
+    if ( condition )  
+    {  
+        statements;  
+    }  
+    else if ( condition )  
+    {  
+        statements;  
+    }  
+    else  
+    {  
+        statements;  
+    }  
 
 *Также наследуется общее правило оформления.*
 
@@ -886,107 +755,83 @@ else
 
 Пример:
 
-`
-for ( initialization; condition; update )  
-{  
-    statements;  
-}  
-`
+    for ( initialization; condition; update )  
+    {  
+        statements;  
+    }  
 
 **[1.5.1.7] Пустой цикл for должен иметь следующий вид:**
 
 Пример:
 
-`
-for ( initialization; condition; update ) ;  
-`
+    for ( initialization; condition; update ) ;  
 
 **[1.5.1.8] Цикл while должен иметь следующий вид:**
 
 Пример:
 
-`
-while ( condition )  
-{  
-    statements;  
-}  
-`
+    while ( condition )  
+    {  
+        statements;  
+    }  
 
 **[1.5.1.9]* Цикл do-while должен иметь следующий вид:**
 
 Пример:
 
-`
-do  
-{  
-    statements;  
-} while ( condition );  
-`
+    do  
+    {  
+        statements;  
+    } while ( condition );  
 
 **[1.5.1.10] Инструкция выбора switch должна иметь следующий вид:**
 
 Пример:
 
-`
-switch ( condition )  
-{  
-case ABC:  
-    statements;  
-    // fallthrough  
-`
-
-`
-case DEF:  
-    statements;  
-    break;  
-`
-
-`
-case XYZ:  
-    statements;  
-    break;  
-`
-
-`
-default:  
-    statements;  
-    break;  
-};  
-`
+    switch ( condition )  
+    {  
+    case ABC:  
+        statements;  
+        // fallthrough  
+    
+    case DEF:  
+        statements;  
+        break;  
+    
+    case XYZ:  
+        statements;  
+        break;  
+    
+    default:  
+        statements;  
+        break;  
+    };  
 
 **[1.5.1.11] Инструкция try-catch должна иметь следующий вид:**
 
 Пример:
 
-`
-try  
-{  
-    statements;  
-}  
-catch ( Exception& exception )  
-{  
-    statements;  
-}  
-`
+    try  
+    {  
+        statements;  
+    }  
+    catch ( Exception& exception )  
+    {  
+        statements;  
+    }  
 
 **[1.5.1.12] Единичные выражения в блоках if-else, for и while могут быть записаны без блочных скобок.**
 
 Пример:
 
-`
-if ( condition )  
-    statement;  
-`
-
-`
-while ( condition )  
-    statement;  
-`
-
-`
-for ( initialization; condition; update )  
-    statement;
-`
+    if ( condition )  
+        statement;  
+    
+    while ( condition )  
+        statement;  
+    
+    for ( initialization; condition; update )  
+        statement;
 
 *Общее правило состоит в том, что блочный скобки стоит ставить всегда. Однако, блочные скобки — это конструкция языка, которая группирует несколько выражений. Скобки для одного выражения излишни.*
 
@@ -996,37 +841,21 @@ for ( initialization; condition; update )
 
 Пример:
 
-`
-a = ( b + c ) * d; // NOT: a=(b+c)*d  
-`
-
-`
-while ( true ) // NOT: while(true)  
-`
-
-`
-doSomething( a, b, c, d ); // NOT: doSomething(a,b,c,d);  
-`
-
-`
-case 100: // NOT: case 100 :  
-`
-
-`
-a = ( bool ) ? b : c;  
-`
-
-`
-for ( i = 0; i < 10; ++i ) // NOT: for(i=0;i<10;++i)  
-`
-
-`
-template< class T > // NOT: template<class T>  
-`
-
-`
-a[ i ] = 10; // NOT: a[i]=10;  
-`
+    a = ( b + c ) * d; // NOT: a=(b+c)*d  
+    
+    while ( true ) // NOT: while(true)  
+    
+    doSomething( a, b, c, d ); // NOT: doSomething(a,b,c,d);  
+    
+    case 100: // NOT: case 100 :  
+    
+    a = ( bool ) ? b : c;  
+    
+    for ( i = 0; i < 10; ++i ) // NOT: for(i=0;i<10;++i)  
+    
+    template< class T > // NOT: template<class T>  
+    
+    a[ i ] = 10; // NOT: a[i]=10;  
 
 *Следует показывать отдельные объекты путем выделения их пробелами. Сложно дать полный список рекомендаций по этому правилу.* 
 
@@ -1034,25 +863,17 @@ a[ i ] = 10; // NOT: a[i]=10;
 
 Пример:
 
-`
-Matrix4x4 matrix = new Matrix4x4( );
-`
-
-`
-double cosAngle = Math.cos( angle );  
-double sinAngle = Math.sin( angle );  
-`
-
-`
-matrix.setElement( 1, 1,  cosAngle );  
-matrix.setElement( 1, 2,  sinAngle );  
-matrix.setElement( 2, 1, -sinAngle );  
-matrix.setElement( 2, 2,  cosAngle );  
-`
-
-`
-multiply( matrix );  
-`
+    Matrix4x4 matrix = new Matrix4x4( );
+    
+    double cosAngle = Math.cos( angle );  
+    double sinAngle = Math.sin( angle );  
+    
+    matrix.setElement( 1, 1,  cosAngle );  
+    matrix.setElement( 1, 2,  sinAngle );  
+    matrix.setElement( 2, 1, -sinAngle );  
+    matrix.setElement( 2, 2,  cosAngle );  
+    
+    multiply( matrix );  
 
 *Улучшает читаемость кода благодаря логическому разделению блоков кода.*
 
@@ -1060,11 +881,9 @@ multiply( matrix );
 
 Пример:
 
-`
-AsciiFile* file;  
-int        nPoints;  
-float      x, y;  
-`
+    AsciiFile* file;  
+    int        nPoints;  
+    float      x, y;  
 
 *Улучшает читаемость. Легче увидеть переменные.*
 
@@ -1072,31 +891,23 @@ float      x, y;
 
 Пример:
 
-`
-if      ( a == lowValue )    computeSomething( );  
-else if ( a == mediumValue ) computeSomethingElse( );  
-else if ( a == highValue )   computeSomethingElseYet( );  
-`
-
-`
-value = ( potential        * oilDensity )   / constant1 +  
-        ( depth            * waterDensity ) / constant2 +  
-        ( zCoordinateValue * gasDensity )   / constant3;  
-`
-
-`
-minPosition     = computeDistance( min,     x, y, z );  
-averagePosition = computeDistance( average, x, y, z );  
-`
-
-`
-switch ( value )  
-{  
-case PHASE_OIL:   strcpy( phase, “oil” );   break;  
-case PHASE_WATER: strcpy( phase, “Water” ); break;  
-case PHASE_GAS:   strcpy( phase, “Gas” );   break;  
-};  
-`
+    if      ( a == lowValue )    computeSomething( );  
+    else if ( a == mediumValue ) computeSomethingElse( );  
+    else if ( a == highValue )   computeSomethingElseYet( );  
+    
+    value = ( potential        * oilDensity )   / constant1 +  
+            ( depth            * waterDensity ) / constant2 +  
+            ( zCoordinateValue * gasDensity )   / constant3;  
+    
+    minPosition     = computeDistance( min,     x, y, z );  
+    averagePosition = computeDistance( average, x, y, z );  
+    
+    switch ( value )  
+    {  
+    case PHASE_OIL:   strcpy( phase, “oil” );   break;  
+    case PHASE_WATER: strcpy( phase, “Water” ); break;  
+    case PHASE_GAS:   strcpy( phase, “Gas” );   break;  
+    };  
 
 *Существует несколько различных мест, где правильное использование выравниваний может существенно улучшить читаемость кода.* 
 
@@ -1116,10 +927,8 @@ case PHASE_GAS:   strcpy( phase, “Gas” );   break;
 
 Пример:
 
-`
-// Comment spanning  
-// more than one line  
-`
+    // Comment spanning  
+    // more than one line  
 
 **Следует использовать данный стиль комментариев ввиду того, что комментарии вида «/\* \*/» обычно используются при отладке. Также обязательно должен быть пробел между «//» и последующими комментариями. Каждое предложение комментариев должно начинаться с заглавной буквы — это необходимо для систем автоматического построения документации.*
 
@@ -1127,22 +936,18 @@ case PHASE_GAS:   strcpy( phase, “Gas” );   break;
 
 Пример:
 
-`
-while ( true )  
-{  
+    while ( true )  
+    {  
+        // Do something  
+        something( );  
+    }  
+    
+    // NOT!  
+    while ( true )  
     // Do something  
-    something( );  
-}  
-`
-
-`
-// NOT!  
-while ( true )  
-// Do something  
-{  
-    something( );  
-}  
-`
+    {  
+        something( );  
+    }  
 
 *Данное правило призвано недопустить разрыв комментариями логической структуры кода.*
 
