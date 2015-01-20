@@ -437,7 +437,7 @@
 Пример:  
 
     bool isFinished = ( iElement < 0 ) || ( iElement > maxElement );  
-    bool isRepeatedEntry = iElement = lastElement;  
+    bool isRepeatedEntry = iElement == lastElement;  
     if ( isFinished || isRepeatedEntry )  
     {  
         …  
@@ -692,21 +692,6 @@
     {  
         statements;  
     }  
-
-**[1.5.1.12] Единичные выражения в блоках if-else, for и while могут быть записаны без блочных скобок.**
-
-Пример:
-
-    if ( condition )  
-        statement;  
-    
-    while ( condition )  
-        statement;  
-    
-    for ( initialization; condition; update )  
-        statement;
-
-*Общее правило состоит в том, что блочный скобки стоит ставить всегда. Однако, блочные скобки — это конструкция языка, которая группирует несколько выражений. Скобки для одного выражения излишни.*
 
 ### 1.5.2. Пробелы ###
 
